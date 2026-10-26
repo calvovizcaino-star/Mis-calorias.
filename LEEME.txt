@@ -1,0 +1,2 @@
+MIS CALORÍAS — ACTUALIZACIÓN
+Sube index.html, manifest.json y sw.js a la raíz del repositorio GitHub Pages. La biblioteca incluye alimentos habituales con valores orientativos por 100 g o 100 ml. Puedes guardar alimentos de marca manualmente y reutilizarlos. La foto puede abrirse, pero el reconocimiento automático OCR/IA aún no está conectado y requiere un servicio externo seguro. Los datos se guardan localmente en este navegador. Exporta copia JSON desde Ajustes.
