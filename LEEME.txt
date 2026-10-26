@@ -1,21 +1,16 @@
-MIS CALORÍAS — ACTUALIZACIÓN V2
+MIS CALORÍAS — CORRECCIÓN DE DISEÑO
 
-Archivos:
-- index.html: diseño móvil corregido y biblioteca de alimentos.
-- manifest.json, sw.js e iconos: instalación como web app y caché.
+Sube estos archivos al repositorio GitHub existente y confirma los cambios:
+- index.html
+- sw.js
+- manifest.json
+- icon-192.png
+- icon-512.png
 
-Mejoras:
-- En pantallas estrechas, fecha y objetivo aparecen apilados para evitar cortes.
-- Buscador y lista de alimentos tienen separación y estilos móviles mejorados.
-- Incrementa la versión de caché para que el navegador no conserve los archivos antiguos.
+Cambios:
+- Fecha y objetivo diario ahora se colocan en vertical en pantallas pequeñas.
+- Los controles de formulario se limitan al ancho disponible.
+- Se cambia la versión de caché para pedir la nueva versión al navegador.
 
-Importante sobre cámara/OCR:
-- La pantalla de foto permite abrir la cámara o elegir una imagen.
-- Esta versión NO incorpora todavía lectura automática OCR offline. Para lograrlo hay que empaquetar un motor OCR y los datos de idioma español dentro de la web. No se requiere pago por uso, pero aumenta el tamaño de la aplicación.
-- El reconocimiento de platos por IA no es realista de forma fiable y universal en una web ligera sin descargar un modelo local grande o usar un servicio remoto.
-- Los valores de la tabla son orientativos. Comprueba las etiquetas del fabricante.
-
-Datos:
-- Los datos se guardan en el almacenamiento local del navegador del dispositivo.
-- Exporta copias de seguridad periódicamente.
-- No publiques copias con datos personales ni claves privadas en el repositorio público.
+Nota: esta actualización corrige el diseño móvil. No incorpora todavía OCR automático sin conexión ni reconocimiento de platos.
+Los datos siguen guardados en el almacenamiento local del navegador.
