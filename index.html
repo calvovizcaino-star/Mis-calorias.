@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f26a3d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Mis Calorías">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
+<title>Mis Calorías</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brandmark">✳</div><div><div class="eyebrow">TU BIENESTAR, A TU RITMO</div><h1>Mis Calorías</h1></div><button id="settingsShortcut" class="iconbtn" aria-label="Ajustes">⚙</button></header>
+<main>
+<nav class="tabs"><button class="tab active" data-tab="hoy">Hoy</button><button class="tab" data-tab="peso">Mi peso</button><button class="tab" data-tab="perfil">Mi objetivo</button></nav>
+<section id="hoy" class="view active">
+<div class="greeting"><div><p class="eyebrow">RESUMEN DE HOY</p><h2>¡Vamos paso a paso!</h2></div><span class="datepill" id="todayDate"></span></div>
+<div class="caloriecard">
+<div class="ring" id="ring"><div class="ringinner"><span class="muted">CONSUMIDAS</span><strong id="consumed">0</strong><span class="muted">kcal</span></div></div>
+<div class="remaining"><span class="muted">Te quedan</span><strong id="remaining">—</strong><span class="muted">kcal hoy</span></div>
+<div class="stats"><div><span>Objetivo</span><b id="targetLabel">2000 kcal</b></div><div><span>Alimentos</span><b id="foodCount">0 registros</b></div></div>
+</div>
+<div class="sectionhead"><h3>Lo que has comido</h3><button class="textbtn" id="addTop">＋ Añadir</button></div>
+<div id="foodList" class="foodlist"><div class="empty"><div class="emptyicon">🍽️</div><b>Aún no has registrado comida</b><p>Añade tu primera comida para empezar.</p></div></div>
+<div class="sectionhead"><h3>Añadir una comida</h3><span class="muted">Foto o manual</span></div>
+<div class="panel">
+<label class="upload" for="photoInput"><span class="camera">📷</span><span><b>Fotografía del plato</b><small>Elige una foto para verla y registrar la comida</small></span><span class="chevron">＋</span></label>
+<input id="photoInput" type="file" accept="image/*" capture="environment" hidden>
+<img id="preview" class="preview hidden" alt="Vista previa del plato">
+<p class="notice">La estimación automática por IA todavía no está conectada. En este prototipo puedes escribir qué hay en el plato y ajustar las calorías estimadas.</p>
+<form id="foodForm">
+<label>¿Qué has comido?<input id="foodName" required placeholder="Ej. tortilla de patatas"></label>
+<div class="two"><label>Cantidad<input id="portion" placeholder="Ej. 200 g"></label><label>Calorías estimadas<input id="foodCalories" type="number" min="0" max="10000" required placeholder="Ej. 350"></label></div>
+<label>Comida<select id="meal"><option>Desayuno</option><option>Comida</option><option>Merienda</option><option>Cena</option><option>Otro</option></select></label>
+<button class="primary full" type="submit">＋ Guardar comida</button>
+</form>
+</div>
+<div class="fineprint">Las calorías son estimaciones orientativas, no una medición exacta.</div>
+</section>
+<section id="peso" class="view">
+<div class="sectionintro"><p class="eyebrow">TU EVOLUCIÓN</p><h2>Mi peso</h2><p>Registra tu peso y observa cómo cambia con el tiempo.</p></div>
+<div class="panel"><form id="weightForm"><div class="two"><label>Peso de hoy (kg)<input id="weightValue" type="number" min="20" max="350" step="0.1" placeholder="Ej. 82,5" required></label><label>Fecha<input id="weightDate" type="date" required></label></div><button class="primary full" type="submit">Guardar peso</button></form></div>
+<div class="panel chartpanel"><div class="sectionhead"><h3>Historial</h3><span id="weightChange" class="muted">Sin registros</span></div><canvas id="weightChart" height="220" aria-label="Gráfica de peso"></canvas><div id="chartEmpty" class="empty small"><p>Añade al menos un registro para ver tu gráfica.</p></div></div>
+<div id="weightList" class="weightlist"></div>
+</section>
+<section id="perfil" class="view">
+<div class="sectionintro"><p class="eyebrow">PERSONALIZA TU PLAN</p><h2>Mi objetivo</h2><p>Calcularemos una orientación diaria a partir de tus datos. Puedes ajustar el resultado.</p></div>
+<div class="panel"><form id="profileForm">
+<label>¿Cómo te llamamos? (opcional)<input id="nickname" placeholder="Tu nombre"></label>
+<div class="two"><label>Edad<input id="age" type="number" min="18" max="110" placeholder="Años" required></label><label>Sexo usado para la fórmula<select id="sex"><option value="female">Mujer</option><option value="male">Hombre</option></select></label></div>
+<div class="two"><label>Altura (cm)<input id="height" type="number" min="120" max="230" placeholder="Ej. 170" required></label><label>Peso actual (kg)<input id="profileWeight" type="number" min="30" max="350" step="0.1" placeholder="Ej. 80" required></label></div>
+<label>Actividad diaria<select id="activity"><option value="1.2">Poca actividad</option><option value="1.375">Actividad ligera (1–3 días/semana)</option><option value="1.55">Actividad moderada (3–5 días/semana)</option><option value="1.725">Actividad alta (6–7 días/semana)</option></select></label>
+<label>Tu objetivo<select id="goal"><option value="lose">Perder peso gradualmente</option><option value="maintain">Mantener mi peso</option><option value="gain">Ganar peso</option></select></label>
+<button class="primary full" type="submit">Calcular mi objetivo</button>
+</form><div id="goalResult" class="goalresult hidden"></div></div>
+<div class="panel"><label>Objetivo diario personalizado (kcal)<input id="manualTarget" type="number" min="1000" max="6000" step="50" value="2000"></label><button id="saveTarget" class="secondary full">Guardar objetivo diario</button></div>
+<div class="notice">La cifra calculada es una estimación general, no consejo médico. Las necesidades reales varían. Esta herramienta está pensada para adultos; si tienes una condición médica, estás embarazada o necesitas una pauta clínica, consulta a un profesional sanitario.</div>
+<button id="exportData" class="secondary full">Exportar mis datos (JSON)</button><button id="clearData" class="danger full">Borrar todos mis datos</button>
+</section>
+</main>
+<footer><span>Hecha para ti</span><span>♥ Tus datos se guardan en este dispositivo</span></footer>
+<script src="app.js"></script>
+</body></html>
