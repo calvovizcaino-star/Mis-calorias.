@@ -1,16 +1,11 @@
-MIS CALORÍAS — CORRECCIÓN DE DISEÑO
+MIS CALORÍAS — PRIMERA VERSIÓN CON OCR
 
-Sube estos archivos al repositorio GitHub existente y confirma los cambios:
-- index.html
-- sw.js
-- manifest.json
-- icon-192.png
-- icon-512.png
+La pantalla Foto etiqueta incorpora un lector OCR con Tesseract.js.
+- Requiere conexión a Internet para descargar la biblioteca y los datos de idioma en esta versión.
+- No usa una API de pago ni una clave secreta.
+- No es todavía OCR totalmente offline.
+- La detección automática de calorías y macros es heurística; revisa siempre los campos.
+- El nombre del producto y el peso neto no se extraen de forma fiable y deben comprobarse manualmente.
+- La lectura no guarda el alimento por sí sola: copia los datos al formulario Crear alimento y el usuario debe pulsar Guardar alimento.
 
-Cambios:
-- Fecha y objetivo diario ahora se colocan en vertical en pantallas pequeñas.
-- Los controles de formulario se limitan al ancho disponible.
-- Se cambia la versión de caché para pedir la nueva versión al navegador.
-
-Nota: esta actualización corrige el diseño móvil. No incorpora todavía OCR automático sin conexión ni reconocimiento de platos.
-Los datos siguen guardados en el almacenamiento local del navegador.
+Sube index.html, sw.js, manifest.json e iconos al repositorio GitHub existente.
